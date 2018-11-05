@@ -1,16 +1,16 @@
-GPU=0
-CUDNN=0
-CUDNN_HALF=0
-OPENCV=0
+GPU=1
+CUDNN=1
+CUDNN_HALF=1
+OPENCV=1
 AVX=0
-OPENMP=0
-LIBSO=0
+OPENMP=1
+LIBSO=1
 
 # set GPU=1 and CUDNN=1 to speedup on GPU
 # set CUDNN_HALF=1 to further speedup 3 x times (Mixed-precision using Tensor Cores) on GPU Tesla V100, Titan V, DGX-2
 # set AVX=1 and OPENMP=1 to speedup on CPU (if error occurs then set AVX=0)
 
-DEBUG=0
+DEBUG=1
 
 ARCH= -gencode arch=compute_30,code=sm_30 \
       -gencode arch=compute_35,code=sm_35 \
@@ -72,8 +72,8 @@ CFLAGS+=$(OPTS)
 ifeq ($(OPENCV), 1) 
 COMMON+= -DOPENCV
 CFLAGS+= -DOPENCV
-LDFLAGS+= `pkg-config --libs opencv` 
-COMMON+= `pkg-config --cflags opencv` 
+LDFLAGS+= `pkg-config --libs opencv Qt5Gui Qt5Widgets Qt5Test libpng libavcodec libavutil libavformat x264 libswscale libswresample libjpeg libwebp icu-i18n blas openh264` -lgfortran -liconv -ljasper
+COMMON+= `pkg-config --cflags opencv Qt5Gui Qt5Widgets libpng libavcodec libavutil libavformat x264 libswscale libswresample libjpeg libwebp` 
 endif
 
 ifeq ($(OPENMP), 1)
