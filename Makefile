@@ -51,8 +51,8 @@ LIBNAMESO=darknet.so
 APPNAMESO=uselib
 endif
 
-CC=gcc
-CPP=g++
+CC=gcc-5
+CPP=g++-5
 NVCC=nvcc 
 OPTS=-Ofast
 LDFLAGS= -lm -pthread 
