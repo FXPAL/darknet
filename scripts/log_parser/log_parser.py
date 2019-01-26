@@ -104,6 +104,9 @@ def log_parser(args):
     # saved as svg
     save_path = os.path.join(args.save_dir, file_name + '.svg')
     plt.savefig(save_path, dpi=300, format="svg")
+    # saved as png
+    save_path = os.path.join(args.save_dir, file_name + '.png')
+    plt.savefig(save_path, format="png")
     if args.show_plot:
         plt.show()
 

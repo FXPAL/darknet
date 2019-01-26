@@ -54,7 +54,7 @@ endif
 CC=gcc-5
 CPP=g++-5
 NVCC=nvcc 
-OPTS=-Ofast
+OPTS=-Ofast -O4 -g
 LDFLAGS=-Wl,-rpath,$(CONDA_PREFIX)/lib -lm -pthread 
 COMMON= 
 CFLAGS=-Wall -Wfatal-errors -Wno-unused-result -Wno-unknown-pragmas
